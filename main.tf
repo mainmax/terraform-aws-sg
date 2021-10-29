@@ -4,10 +4,6 @@ resource  "aws_security_group" "this" {
   vpc_id      = var.vpc_id
 }
 
-variable "terms" {
-  default = {}
-}
-
 locals {
   map = merge( 
     {
@@ -41,7 +37,6 @@ locals {
       "Elastic Graphics"= "TCP 5432"
       "PING"            = "ICMP 8-0"
     }, 
-    var.terms,
     {for k,v in var.rules_vars: "{${k}}" => v}
   )
 
