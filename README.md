@@ -13,7 +13,7 @@ From this:
     OUT TCP  443  pl-02cd2c6b       - DynamoDB Prefix List
 ```
 to this:
-![](https://github.com/mainmax/terraform-aws-sg/raw/master/aws-sg-rules.png)
+![](https://github.com/mainmax/terraform-aws-sg/raw/master/docs/img/aws-sg-rules.png)
 
 Motivation for this module was to allow people that are not familiar with terraform (like Network and InfoSec guys) to be able to create/review Security Groups configurations without HCL in a way. It also allows to directly copy/paste more readable Security Group rules between change tickets, technical documentation (if you maintain one) and TF templates. 
 
@@ -25,7 +25,7 @@ SSH -> TCP 22, Any_IPv4 -> 0.0.0.0/0
 
 ```hcl
 module "sg_bastion" {
-  source      = "../../"
+  source      = "mainmax/sg/aws"
   name        = "TF Test Bastion"
   description = "Test SG for Bastion"
   vpc_id      = aws_vpc.test.id
@@ -40,7 +40,7 @@ Dynamic values that are available during Apply can be added with combination of
 
 ```hcl
 module "sg_web" {
-  source      = "../../"
+  source      = "mainmax/sg/aws"
   name        = "TF Test Web"
   description = "Test SG for Web services"
   vpc_id      = aws_vpc.test.id
@@ -67,7 +67,7 @@ Port ranges are supported with dash and no spaces "from_port-to_port"
 
 ```hcl
 module "sg_db" {
-  source      = "../../"
+  source      = "mainmax/sg/aws"
   name        = "TF Test DB"
   description = "Test SG for DB services"
   vpc_id      = aws_vpc.test.id
