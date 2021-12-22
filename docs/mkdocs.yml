@@ -2,4 +2,4 @@ markdown_extensions:
   - markdown_include.include
 docs_dir: "index"
 # site_dir: "../_build/html"
-# site_name: "Hello World"
+site_name: "Terraform AWS Security Group"
